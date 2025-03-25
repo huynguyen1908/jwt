@@ -28,10 +28,15 @@ jobs:
       - name: Debug Docker Username
         run: echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}"
 
+      - name: Debug Docker Build Command
+        run: | 
+          echo docker build -t ${{ secrets.DOCKER_USERNAME }}/my-springboot-app:latest .
+
+
       - name: Build Docker image
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/my-springboot-app:latest .
-          docker tag ${{ secrets.DOCKER_USERNAME }}/my-springboot-app:latest ${{ secrets.DOCKER_USERNAME }}/corstest-springboot-app:${{ github.sha }}
+          docker tag ${{ secrets.DOCKER_USERNAME }}/my-springboot-app:latest ${{ secrets.DOCKER_USERNAME }}/my-springboot-app:${{ github.sha }}
 
       - name: Push Docker image to Docker Hub
         run: |

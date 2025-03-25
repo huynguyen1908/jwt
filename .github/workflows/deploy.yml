@@ -48,7 +48,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t $DOCKER_USERNAME/my-springboot-app:latest .
-          docker tag $DOCKER_USERNAME/my-springboot-app:latest $DOCKER_USERNAME/my-springboot-app:${{ github.sha }}
+#          docker tag $DOCKER_USERNAME/my-springboot-app:latest $DOCKER_USERNAME/my-springboot-app:${{ github.sha }}
 
       - name: Push Docker image to Docker Hub
         run: |

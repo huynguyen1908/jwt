@@ -3,10 +3,10 @@ name: CI/CD Docker Deployment
 on:
   push:
     branches:
-      - ci/cd  # Chạy khi có code push lên nhánh main
+      - release
 
 jobs:
-  build-and-push:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,19 +27,10 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/my-app:latest .
-          docker tag ${{ secrets.DOCKER_USERNAME }}/my-app:latest ${{ secrets.DOCKER_USERNAME }}/my-app:${{ github.sha }}
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/corstest-springboot-app:latest .
+          docker tag ${{ secrets.DOCKER_USERNAME }}/corstest-springboot-app:latest ${{ secrets.DOCKER_USERNAME }}/corstest-springboot-app:${{ github.sha }}
 
       - name: Push Docker image to Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-app:${{ github.sha }}
-
-      - name: Deploy Container (Optional)
-        run: |
-          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} <<EOF
-          docker pull ${{ secrets.DOCKER_USERNAME }}/my-app:latest
-          docker stop my-app || true
-          docker rm my-app || true
-          docker run -d --name my-app -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/my-app:latest
-          EOF
+          docker push ${{ secrets.DOCKER_USERNAME }}/corstest-springboot-app:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/corstest-springboot-app:${{ github.sha }}

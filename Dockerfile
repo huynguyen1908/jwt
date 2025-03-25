@@ -3,8 +3,10 @@ FROM maven:3.9.6-eclipse-temurin-17 AS builder
 
 WORKDIR /app
 
+RUN chmode +x mvnw
 # Copy source code
 COPY . .
+
 
 # Build project
 RUN mvn clean package -DskipTests

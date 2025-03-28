@@ -3,3 +3,7 @@ docker container
 
 CI with github action
 ![image](https://github.com/user-attachments/assets/2ca47bee-08d7-4a51-abde-d165fac60160)
+
+CD with ArgoCD
+![image](https://github.com/user-attachments/assets/ccfbb44b-abcf-40ca-881a-1e662563a56d)
+

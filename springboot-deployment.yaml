@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: springboot
-          image: corstest-springboot-app:lastest
+          image: corstest-springboot-app:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 8081

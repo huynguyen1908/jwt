@@ -4,22 +4,25 @@ metadata:
   name: mysql
   labels:
     app: mysql
+#    tier: database
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: mysql
+#      tier: database
   template:
     metadata:
       labels:
         app: mysql
+#        tier: database
     spec:
       containers:
         - name: mysql
           image: mysql:8
           env:
-            - name: DATABASE_URL
-              value: "jdbc:mysql://mysql-db:3306/security_db"
+#            - name: DATABASE_URL
+#              value: "jdbc:mysql://mysql-db:3306/security_db"
             - name: MYSQL_ROOT_PASSWORD
               value: Nokidding123456
             - name: MYSQL_DATABASE
@@ -44,3 +47,19 @@ spec:
   resources:
     requests:
       storage: 1Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  selector:
+    app: mysql
+#    tier: database
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  type: ClusterIP
+

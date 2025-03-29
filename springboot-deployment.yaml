@@ -15,14 +15,29 @@ spec:
       containers:
         - name: springboot
           image: corstest-springboot-app:latest
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:mysql://mysql:3306/security_db"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: Nokidding123456
+            - name: KEYCLOAK_AUTH_SERVER_URL
+              value: "http://keycloak:8080/auth"
+            - name: KEYCLOAK_REALM
+              value: myrealm
+            - name: KEYCLOAK_RESOURCE
+              value: spring-client
+            - name: SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_ISSUER_URI
+              value: "http://keycloak:8080/realms/myrealm"
           ports:
             - containerPort: 8081
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: springboot-service
+  name: springboot
 spec:
   selector:
     app: springboot

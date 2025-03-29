@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mysql-db:
     image: mysql:8
-    container_name: mysql-db
+    container_name: mysql-db-docker
     ports:
       - "3307:3306"
     environment:
@@ -16,7 +16,7 @@ services:
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest
-    container_name: keycloak
+    container_name: keycloak-docker
     command: start-dev
     environment:
       KEYCLOAK_ADMIN: admin
@@ -28,7 +28,7 @@ services:
 
   springboot-app:
     build: .
-    container_name: springboot-app
+    container_name: springboot-app-docker
     ports:
       - "8686:8080"
     environment:

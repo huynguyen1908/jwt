@@ -6,4 +6,14 @@ CI with github action
 
 CD with ArgoCD
 ![image](https://github.com/user-attachments/assets/ccfbb44b-abcf-40ca-881a-1e662563a56d)
+Prometheus
+![image](https://github.com/user-attachments/assets/69369357-4dd8-4923-80ec-aee8834b74a6)
+
+Alertmanager
+![image](https://github.com/user-attachments/assets/8c7a65f7-b77b-4acd-b39e-201e239a779f)
+
+![image](https://github.com/user-attachments/assets/69978013-476e-4fb4-90cb-327114cb2f80)
+
+Gafana
+![image](https://github.com/user-attachments/assets/1191ebb6-6bb0-4c2a-bf6f-4fa2bf11cb4b)
 
